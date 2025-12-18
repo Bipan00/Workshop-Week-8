@@ -1,0 +1,49 @@
+﻿@page "/foodmenu"
+
+<h2>Food Menu</h2>
+
+@*Sort buttons *@
+<div class="mb-3">
+    <button class="btn btn-primary me-2" @onclick="SortByPrice">Sort by Price</button>
+    <button class="btn btn-primary me-2" @onclick="SortByName">Sort by Name</button>
+</div>
+
+@* Display food items *@
+<div class="d-flex flex-wrap">
+    @foreach (var item in foodItems)
+    {
+        <ItemCard Name="@item.Name" Ingredients="@item.Ingredients" Price="@item.Price" />
+    }
+</div>
+
+@code {
+    // Food item model
+    public class Item
+    {
+        public string Name { get; set; }
+        public string Ingredients { get; set; }
+        public decimal Price { get; set; }
+    }
+
+    // List of food items
+    List<Item> foodItems = new List<Item>
+    {
+        new Item { Name = "Pizza", Ingredients = "Cheese, Tomato, Pepperoni", Price = 12.99M },
+        new Item { Name = "Burger", Ingredients = "Beef, Lettuce, Tomato, Cheese", Price = 8.50M },
+        new Item { Name = "Pasta", Ingredients = "Tomato Sauce, Cheese, Basil", Price = 10.00M },
+        new Item { Name = "Salad", Ingredients = "Lettuce, Tomato, Cucumber, Olive Oil", Price = 6.50M },
+        new Item { Name = "Sushi", Ingredients = "Rice, Fish, Seaweed", Price = 15.00M }
+    };
+
+    // Sort by Price (ascending)
+    private void SortByPrice()
+    {
+        foodItems = foodItems.OrderBy(f => f.Price).ToList();
+    }
+
+    // Sort by Name (alphabetical)
+    private void SortByName()
+    {
+        foodItems = foodItems.OrderBy(f => f.Name).ToList();
+    }
+}

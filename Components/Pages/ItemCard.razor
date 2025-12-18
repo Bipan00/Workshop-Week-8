@@ -1,0 +1,16 @@
+﻿<div class="card m-2 p-3 item-card">
+    <h5 class="card-title">@Name</h5>
+    <p><strong>Ingredients:</strong> @Ingredients</p>
+    <p><strong>Price:</strong> $@Price</p>
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Ingredients { get; set; }
+
+    [Parameter]
+    public decimal Price { get; set; }
+}

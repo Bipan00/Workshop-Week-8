@@ -1,0 +1,69 @@
+﻿@page "/products"
+@layout ProductLayout
+
+<h2>Products</h2>
+<div class="d-flex flex-wrap">
+    @foreach (var product in products)
+    {
+        <ProductCard 
+            Image="@product.Image"
+            ProductName="@product.Name"
+            Price="@product.Price"
+            LikeCount="@product.Likes" />
+    }
+</div>
+
+@code {
+    // Product model
+    public class Product
+    {
+        public string Image { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Likes { get; set; }
+    }
+
+    // List of products
+    List<Product> products = new List<Product>
+    {
+        new Product {
+            Image = "https://cdn.mos.cms.futurecdn.net/Gw3Se82bvppoJsHc4rCVsQ-650-80.jpg.webp",
+            Name = "Laptop",
+            Price = 1200,
+            Likes = 45
+        },
+        new Product {
+            Image = "https://cdn.mos.cms.futurecdn.net/Gw3Se82bvppoJsHc4rCVsQ-650-80.jpg.webp",
+            Name = "Smartphone",
+            Price = 800,
+            Likes = 60
+        },
+        new Product {
+            Image = "https://cdn.mos.cms.futurecdn.net/Gw3Se82bvppoJsHc4rCVsQ-650-80.jpg.webp",
+            Name = "Headphones",
+            Price = 150,
+            Likes = 30
+        },
+        new Product {
+            Image = "https://cdn.mos.cms.futurecdn.net/Gw3Se82bvppoJsHc4rCVsQ-650-80.jpg.webp",
+            Name = "Smart Watch",
+            Price = 250,
+            Likes = 40
+        },
+        new Product {
+            Image = "https://cdn.mos.cms.futurecdn.net/Gw3Se82bvppoJsHc4rCVsQ-650-80.jpg.webp",
+            Name = "Keyboard",
+            Price = 100,
+            Likes = 20
+        }
+    };
+}
+
+
+
+
+@* <ul>
+    <li> Foundation </li>
+    <li> Concealer </li>
+    <li> Eye Liner </li>
+</ul> *@
